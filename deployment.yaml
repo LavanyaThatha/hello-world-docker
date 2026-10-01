@@ -14,4 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: <your-dockerhub-username>/hello-world:latest
+        image: lavanya/hello-world:latest   # <-- your Docker Hub repo
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
