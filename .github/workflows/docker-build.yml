@@ -18,6 +18,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Debug username
+        run: echo "Docker password is ${{ secrets.DOCKER_USERNAME }}"   
+          
+      - name: Debug password
+        run: echo "Docker password is ${{ secrets.DOCKER_PASSWORD }}"
+
 
       - name: Build Docker image
         run: docker build -t lavanyathatha/hello-world-docker:latest .
