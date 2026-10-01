@@ -3,24 +3,26 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # runs whenever you push to main branch
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: lavanyathatha
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build Docker image
-      run: docker build -t lavanyathatha/hello-world:latest .
+      - name: Debug username
+        run: echo "Docker username is ${{ secrets.DOCKER_USERNAME }}"
 
-    - name: Push Docker image
-      run: docker push lavanyathatha/hello-world:latest
+      - name: Build Docker image
+        run: docker build -t lavanyathatha/hello-world-docker:latest .
+
+      - name: Push Docker image
+        run: docker push lavanyathatha/hello-world-docker:latest
