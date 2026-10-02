@@ -1,4 +1,6 @@
-FROM python:3.10-slim
+FROM python:3.9-slim
 WORKDIR /app
-COPY app.py .
-CMD ["python3", "app.py"]
+COPY app.py /app
+RUN pip install flask
+EXPOSE 8080
+CMD ["python", "app.py"]
