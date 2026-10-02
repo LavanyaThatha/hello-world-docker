@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: lavanyathatha/hello-world:latest   # <-- your Docker Hub repo
+        image: lavanyathatha/hello-world-docker:latest   # <-- your Docker Hub repo
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
