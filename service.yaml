@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: hello-world-service
 spec:
+  type: NodePort
   selector:
     app: hello-world
   ports:
-    - port: 80
-      targetPort: 8080
-  type: NodePort
+  - port: 80          # Service port
+    targetPort: 8080  # Flask app port inside the pod
+    nodePort: 31894   # Fixed NodePort exposed on localhost
